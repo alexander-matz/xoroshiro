@@ -121,12 +121,11 @@ void xs256_jump();
    subsequences for parallel distributed computations. */
 void xs256_long_jump();
 
+#ifdef XOROSHIRO_IMPLEMENTATION
 
 static inline uint64_t rotl(const uint64_t x, int k) {
 	return (x << k) | (x >> (64 - k));
 }
-
-#ifdef XOROSHIRO_IMPLEMENTATION
 
 uint64_t xs256_s[4];
 
