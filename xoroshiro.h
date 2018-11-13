@@ -70,12 +70,8 @@ uint64_t sm64_next() {
 }
 
 double sm64_next_double() {
-  struct {
-    uint64_t i64;
-    double f64;
-  } buf;
-  buf.i64 = 0x3FF0000000000000ULL | (sm64_next() >> 12);
-  return buf.f64 - 1.0;
+  double val = (double)sm64_next();
+  return val / (0x8000000000000000u * 2.0);
 }
 
 #endif
@@ -154,12 +150,8 @@ uint64_t xs256_next() {
 }
 
 double xs256_next_double() {
-  struct {
-    uint64_t i64;
-    double f64;
-  } buf;
-  buf.i64 = 0x3FF0000000000000ULL | (xs256_next() >> 12);
-  return buf.f64 - 1.0;
+  double val = (double)xs256_next();
+  return val / (0x8000000000000000u * 2.0);
 }
 
 void xs256_jump() {
